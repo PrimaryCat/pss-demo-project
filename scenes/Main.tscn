@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/Main.gd" type="Script" id=1]
+[ext_resource path="res://scenes/OuterRect.gd" type="Script" id=2]
+[ext_resource path="res://scenes/MiddleRect.gd" type="Script" id=3]
+[ext_resource path="res://scenes/InnerRect.gd" type="Script" id=4]
+[ext_resource path="res://scenes/DarkMode.gd" type="Script" id=5]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.945098, 0.909804, 0.901961, 1 )
+
+[node name="OuterRect" type="ColorRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+
+[node name="MiddleRect" type="ColorRect" parent="OuterRect"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+
+[node name="InnerRect" type="ColorRect" parent="OuterRect/MiddleRect"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 4 )
+
+[node name="DarkMode" type="Button" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -63.0
+margin_right = 63.0
+margin_bottom = 20.0
+text = "Toggle Dark Mode"
+script = ExtResource( 5 )
+
+[connection signal="pressed" from="DarkMode" to="DarkMode" method="_on_DarkMode_pressed"]
